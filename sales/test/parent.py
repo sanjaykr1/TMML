@@ -2,10 +2,24 @@ import unittest
 import logging
 from pandas.testing import assert_frame_equal
 from pyspark.sql import SparkSession
+from pyspark.sql.types import *
 
 
 class PySparkTest(unittest.TestCase):
 
+    sales_schema = StructType([
+        StructField("Region", StringType(), True),
+        StructField("Country", StringType(), True),
+        StructField("Item Type", StringType(), True),
+        StructField("Sales Channel", StringType(), True),
+        StructField("Order Priority", StringType(), True),
+        StructField("Order Date", StringType(), True),
+        StructField("Order ID", LongType(), True),
+        StructField("Units Sold", DoubleType(), True),
+        StructField("Unit Price", DoubleType(), True),
+        StructField("Total Revenue", DoubleType(), True),
+        StructField("Total Profit", DoubleType(), True),
+    ])
     spark = SparkSession.builder.master('local').appName('testing').getOrCreate()
 
     @classmethod

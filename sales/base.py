@@ -34,12 +34,11 @@ class Utility:
                 df = self.spark.read.\
                     option("delimiter", delimit).\
                     csv(filename, header=True, schema=schema)
-                df = self.date_col_convert(df)
             else:
                 df = self.spark.read. \
                     option("delimiter", delimit). \
                     csv(filename, header=True, inferSchema=True)
-                df = self.date_col_convert(df)
+
         except Exception as e:
             logger.exception("Unable to read file Exception %s occurred", e)
             print("Unable to save file due to exception %s. ", e)
@@ -55,16 +54,10 @@ class Utility:
         """
         logger.info("Writing dataframe to file %s", filename)
         try:
-            df.write.mode("overwrite").csv(filename)
+            df.write.mode("overwrite").\
+                option("header", True).\
+                option("inferSchema", True).\
+                csv(filename)
         except Exception as e:
             logger.exception("Unable to save file Exception %s occurred", e)
             print("Unable to save file due to", e)
-
-    def date_col_convert(self, df):
-        """
-        Convert date column from string to date type
-        :return:
-        """
-        df = df.withColumn("Order Date", f.regexp_replace("Order Date", "-", "/"))
-        df = df.withColumn("Order Date", f.to_date("Order Date", "dd/mm/yyyy"))
-        return df

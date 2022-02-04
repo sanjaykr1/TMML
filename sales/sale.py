@@ -22,6 +22,8 @@ class Sales(Utility):
         self.delimit = delimit
         self.schema = schema
         self.df = super().readfile(self.filename, self.delimit, self.schema)
+        self.df = self.df.withColumn("Order Date", f.regexp_replace("Order Date", "-", "/"))
+        self.df = self.df.withColumn("Order Date", f.to_date("Order Date", "dd/mm/yyyy"))
 
     def tot_revenue(self):
         """
@@ -29,7 +31,7 @@ class Sales(Utility):
         :return: None
         """
         df_region = self.df.groupby("Region").agg(f.sum("Total Revenue").alias("Total Revenue_per_region"))
-        df_region.show(truncate=False)
+        # df_region.show(truncate=False)
         super().writefile(df_region, "region_revenue")
 
     def household_units(self):
@@ -39,7 +41,7 @@ class Sales(Utility):
         """
         df_household = self.df.filter(f.col("Item Type") == "Household").sort("Units Sold", ascending=False)
         df_household = df_household.select("Country", "Units Sold").limit(5)
-        df_household.show()
+        # df_household.show()
         super().writefile(df_household, "household_units")
 
     def tot_profit(self):
@@ -53,7 +55,7 @@ class Sales(Utility):
         print("Total profit in Asia region: ", tot_profit)
         df_asia = df_asia.withColumn("Total_profit_Asia", when(f.col("Region") == "Asia", tot_profit)).\
             orderBy("Order Date")
-        df_asia.show()
+        # df_asia.show()
         super().writefile(df_asia, "total_profit")
 
 
@@ -71,9 +73,10 @@ sales_schema = StructType([
     StructField("Total Profit", DoubleType(), True),
 ])
 
-delim = ";"
-file = "dataset/salesData.csv"
-sale = Sales(file, delim, sales_schema)
-sale.tot_revenue()
-sale.household_units()
-sale.tot_profit()
+#delim = ";"
+#file = "dataset/salesData.csv"
+#f1 = "test_sales.csv"
+#sale = Sales(f1, delim, sales_schema)
+#sale.tot_revenue()
+#sale.household_units()
+#sale.tot_profit()

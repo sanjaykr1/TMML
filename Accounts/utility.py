@@ -27,8 +27,13 @@ class Utility:
         :return: df
         """
         logger.info("Reading csv file with filename %s", filename)
-        df = self.spark.read.csv(filename, header=True)
-        return df
+        try:
+            df = self.spark.read.csv(filename, header=True)
+        except Exception as e:
+            logger.exception("Unable to read file Exception %s occurred", e)
+            print("Unable to read file due to exception %s. ", e)
+        else:
+            return df
 
     def writefile(self, df, filename):
         """
@@ -37,4 +42,9 @@ class Utility:
         :param filename: filename in which dataframe is written
         :return: None
         """
-        df.write.mode("overwrite").csv(filename)
+        logger.info("Writing dataframe to file %s", filename)
+        try:
+            df.write.mode("overwrite").csv(filename)
+        except Exception as e:
+            logger.exception("Unable to save file Exception %s occurred", e)
+            print("Unable to save file due to", e)
