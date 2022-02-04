@@ -44,13 +44,16 @@ class Pipeline(CustomerData, AccountData):
         tot_acc = temp_df.withColumn("No_of_Accounts", f.when(f.col("accountId").isNull(), 0).
                                      otherwise(f.count("customerId").over(w)))
         logger.info("Filtering customers with more than 2 accounts.")
-        cust_df2 = tot_acc.filter(f.col("No_of_Accounts") > 2)
+        cust_df2 = tot_acc.filter(f.col("No_of_Accounts") >= 2)
         cust_df2 = cust_df2.drop("accountId", "balance").dropDuplicates()
 
         tot_acc = tot_acc.dropDuplicates()
         logger.info("Sorting out top 5 accounts having highest balance.")
         top_5_acc = tot_acc.sort("balance", ascending=False).limit(5)
 
+        super().writefile(tot_acc, "total_accounts")
+        super().writefile(cust_df2, "more_than_2_acc")
+        super().writefile(top_5_acc, "top5_acc")
         tot_acc.show()
         cust_df2.show()
         top_5_acc.show()

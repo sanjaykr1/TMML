@@ -1,0 +1,8 @@
+customerId,forename,surname,accountId,balance,No_of_Accounts
+INA001,Jack,Wills,ACC001,1000,2
+INA001,Jack,Wills,ACC004,1002,2
+INA002,Martin,Sueol,ACC002,2003,1
+INA003,Sean,Paul,ACC003,992,2
+INA003,Sean,Paul,ACC006,288,2
+INA005,Daniel,Kenny,ACC005,1999,1
+INA006,Vikram,Kumar,ACC007,9929,1

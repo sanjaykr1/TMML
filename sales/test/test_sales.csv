@@ -1,0 +1,12 @@
+Region;Country;Item Type;Sales Channel;Order Priority;Order Date;Order ID;Units Sold;Unit Price;Total Revenue;Total Profit
+Sub-Saharan Africa;Senegal;Cereal;Online;H;4/18/2014;616607081;6593;205.70;1356180.10;584073.87
+Asia;Kyrgyzstan;Vegetables;Online;H;6/24/2011;814711606;124;154.06;19103.44;7828.12
+Sub-Saharan Africa;Cape Verde;Clothes;Offline;H;8-2-2014;939825713;4168;109.28;455479.04;306097.92
+Asia;Bangladesh;Clothes;Online;L;1/13/2017;187310731;8263;109.28;902980.64;606834.72
+Central America and the Caribbean;Honduras;Household;Offline;H;2-8-2017;522840487;8974;668.27;5997054.98;1487261.02
+Asia;Mongolia;Personal Care;Offline;C;2/19/2014;832401311;4901;81.73;400558.73;122819.06
+Europe;Bulgaria;Clothes;Online;M;4/23/2012;972292029;1673;109.28;182825.44;122865.12
+Asia;Sri Lanka;Cosmetics;Offline;M;11/19/2016;419123971;6952;437.20;3039414.40;1208744.24
+Sub-Saharan Africa;Cameroon;Beverages;Offline;C;4-1-2015;519820964;5430;47.45;257653.50;85033.80
+Asia;Turkmenistan;Household;Offline;L;12/30/2010;441619336;3830;668.27;2559474.10;634745.90
+Australia and Oceania;East Timor;Meat;Online;L;7/31/2012;322067916;5908;421.89;2492526.12;337937.60
