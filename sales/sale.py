@@ -49,14 +49,14 @@ class Sales(Utility):
         """
         # self.df.printSchema()
         # self.df.show()
-        # self.df = self.df.withColumn("Order Date", f.date_format("Order Date", 'dd/MM/yyyy'))
         self.df.printSchema()
         self.df.show()
         df_asia = self.df.filter((f.col("Region") == "Asia") &
                                  ((f.col("Order Date") >= '2011-01-01') & (f.col("Order Date") <= '2015-12-31')))
         tot_profit = df_asia.agg(f.sum(f.col("Total Profit"))).collect()[0][0]
         print("Total profit in Asia region: ", tot_profit)
-        df_asia = df_asia.withColumn("Total_profit_Asia", when(f.col("Region") == "Asia", tot_profit))
+        df_asia = df_asia.withColumn("Total_profit_Asia", when(f.col("Region") == "Asia", tot_profit)).\
+            orderBy("Order Date")
         df_asia.show()
         super().writefile(df_asia, "total_profit")
 

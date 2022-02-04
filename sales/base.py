@@ -34,15 +34,13 @@ class Utility:
                 df = self.spark.read.\
                     option("delimiter", delimit).\
                     csv(filename, header=True, schema=schema)
-                df = df.withColumn("Order Date", f.regexp_replace("Order Date", "-", "/"))
-                df = df.withColumn("Order Date", f.to_date("Order Date", "dd/mm/yyyy"))
+                df = self.date_col_convert(df)
                 # df = df.withColumn("Order Date", f.date_format("Order Date", "dd/MM/yyyy"))
             else:
                 df = self.spark.read. \
                     option("delimiter", delimit). \
                     csv(filename, header=True, inferSchema=True)
-                df = df.withColumn("Order Date", f.regexp_replace("Order Date", "-", "/"))
-                df = df.withColumn("Order Date", f.to_date("Order Date", "dd/mm/yyyy"))
+                df = self.date_col_convert(df)
                 # df = df.withColumn("Order Date", f.date_format("Order Date", "dd/MM/yyyy"))
         except Exception as e:
             logger.exception("Unable to read file Exception %s occurred", e)
@@ -62,5 +60,13 @@ class Utility:
             df.write.mode("overwrite").csv(filename)
         except Exception as e:
             logger.exception("Unable to save file Exception %s occurred", e)
-            print("Unable to save file due to",e)
+            print("Unable to save file due to", e)
 
+    def date_col_convert(self, df):
+        """
+        Convert date column from string to date type
+        :return:
+        """
+        df = df.withColumn("Order Date", f.regexp_replace("Order Date", "-", "/"))
+        df = df.withColumn("Order Date", f.to_date("Order Date", "dd/mm/yyyy"))
+        return df
