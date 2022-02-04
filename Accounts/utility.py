@@ -28,7 +28,7 @@ class Utility:
         """
         logger.info("Reading csv file with filename %s", filename)
         try:
-            df = self.spark.read.csv(filename, header=True)
+            df = self.spark.read.csv(filename, header=True, inferSchema=True)
         except Exception as e:
             logger.exception("Unable to read file Exception %s occurred", e)
             print("Unable to read file due to exception %s. ", e)
@@ -44,7 +44,10 @@ class Utility:
         """
         logger.info("Writing dataframe to file %s", filename)
         try:
-            df.write.mode("overwrite").csv(filename)
+            df.write.mode("overwrite"). \
+                option("header", True). \
+                option("inferSchema", True). \
+                csv(filename)
         except Exception as e:
             logger.exception("Unable to save file Exception %s occurred", e)
             print("Unable to save file due to", e)

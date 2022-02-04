@@ -73,10 +73,9 @@ sales_schema = StructType([
     StructField("Total Profit", DoubleType(), True),
 ])
 
-#delim = ";"
-#file = "dataset/salesData.csv"
-#f1 = "test_sales.csv"
-#sale = Sales(f1, delim, sales_schema)
-#sale.tot_revenue()
-#sale.household_units()
-#sale.tot_profit()
+delim = ";"
+file = "dataset/salesData.csv"
+sale = Sales(file, delim, sales_schema)
+sale.tot_revenue()
+sale.household_units()
+sale.tot_profit()

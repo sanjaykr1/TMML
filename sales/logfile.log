@@ -1,5 +1,5 @@
-02/04/2022 01:13:11 PM : INFO :sales.base :Creating spark session from utility class
-02/04/2022 01:13:22 PM : INFO :sales.base :Reading test_sales.csv file into dataframe
-02/04/2022 01:13:29 PM : INFO :sales.base :Writing dataframe to file region_revenue
-02/04/2022 01:13:35 PM : INFO :sales.base :Writing dataframe to file household_units
-02/04/2022 01:13:37 PM : INFO :sales.base :Writing dataframe to file total_profit
+02/04/2022 02:14:29 PM : INFO :sales.base :Creating spark session from utility class
+02/04/2022 02:14:39 PM : INFO :sales.base :Reading dataset/salesData.csv file into dataframe
+02/04/2022 02:14:40 PM : INFO :sales.base :Writing dataframe to file region_revenue
+02/04/2022 02:14:49 PM : INFO :sales.base :Writing dataframe to file household_units
+02/04/2022 02:14:51 PM : INFO :sales.base :Writing dataframe to file total_profit

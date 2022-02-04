@@ -59,7 +59,7 @@ class Pipeline(CustomerData, AccountData):
         top_5_acc.show()
 
 
-acc = "dataset/account_data.csv"
-cust = "dataset/customer_data.csv"
-obj1 = Pipeline(cust, acc)
-obj1.associated_acc()
+#acc = "dataset/account_data.csv"
+#cust = "dataset/customer_data.csv"
+#obj1 = Pipeline(cust, acc)
+#obj1.associated_acc()
