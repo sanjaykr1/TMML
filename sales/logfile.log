@@ -1,17 +1,5 @@
-02/04/2022 08:08:21 AM : INFO :sales.base :Creating spark session from utility class
-02/04/2022 08:08:31 AM : INFO :sales.base :Reading dataset/salesData.csv file into dataframe
-02/04/2022 08:08:36 AM : INFO :sales.base :Writing dataframe to file region_revenue
-02/04/2022 08:08:43 AM : INFO :sales.base :Writing dataframe to file household_units
-02/04/2022 08:08:45 AM : INFO :sales.base :Writing dataframe to file total_profit
-02/04/2022 08:08:45 AM : ERROR :sales.base :Unable to save file Exception CSV data source does not support null data type.; occurred
-Traceback (most recent call last):
-  File "C:\Users\B00827\IdeaProjects\TMML\sales\base.py", line 62, in writefile
-    df.write.mode("overwrite").csv(filename)
-  File "C:\Users\B00827\spark\spark-3.0.3-bin-hadoop2.7\python\pyspark\sql\readwriter.py", line 1030, in csv
-    self._jwrite.csv(path)
-  File "C:\Users\B00827\spark\spark-3.0.3-bin-hadoop2.7\python\lib\py4j-0.10.9-src.zip\py4j\java_gateway.py", line 1305, in __call__
-    answer, self.gateway_client, self.target_id, self.name)
-  File "C:\Users\B00827\spark\spark-3.0.3-bin-hadoop2.7\python\pyspark\sql\utils.py", line 134, in deco
-    raise_from(converted)
-  File "<string>", line 3, in raise_from
-pyspark.sql.utils.AnalysisException: CSV data source does not support null data type.;
+02/04/2022 09:09:54 AM : INFO :sales.base :Creating spark session from utility class
+02/04/2022 09:09:04 AM : INFO :sales.base :Reading dataset/salesData.csv file into dataframe
+02/04/2022 09:09:11 AM : INFO :sales.base :Writing dataframe to file region_revenue
+02/04/2022 09:09:18 AM : INFO :sales.base :Writing dataframe to file household_units
+02/04/2022 09:09:20 AM : INFO :sales.base :Writing dataframe to file total_profit

@@ -47,13 +47,13 @@ class Sales(Utility):
         Method to calculate total profit between 2011 and 2015 for Asia region
         :return:
         """
+        # self.df.printSchema()
+        # self.df.show()
+        # self.df = self.df.withColumn("Order Date", f.date_format("Order Date", 'dd/MM/yyyy'))
         self.df.printSchema()
         self.df.show()
-        self.df = self.df.withColumn("Order Date", f.date_format("Order Date", "dd/MM/yyyy"))
-        self.df.printSchema()
-        self.df.show()
-        df_asia = self.df.filter((f.col("Region") == "Asia")). \
-            filter(f.col("Order Date").between('01/01/2011', '31/12/2015'))
+        df_asia = self.df.filter((f.col("Region") == "Asia") &
+                                 ((f.col("Order Date") >= '2011-01-01') & (f.col("Order Date") <= '2015-12-31')))
         tot_profit = df_asia.agg(f.sum(f.col("Total Profit"))).collect()[0][0]
         print("Total profit in Asia region: ", tot_profit)
         df_asia = df_asia.withColumn("Total_profit_Asia", when(f.col("Region") == "Asia", tot_profit))

@@ -36,14 +36,14 @@ class Utility:
                     csv(filename, header=True, schema=schema)
                 df = df.withColumn("Order Date", f.regexp_replace("Order Date", "-", "/"))
                 df = df.withColumn("Order Date", f.to_date("Order Date", "dd/mm/yyyy"))
-                df = df.withColumn("Order Date", f.date_format("Order Date", "dd/MM/yyyy"))
+                # df = df.withColumn("Order Date", f.date_format("Order Date", "dd/MM/yyyy"))
             else:
                 df = self.spark.read. \
-                    option("delimiter",delimit). \
+                    option("delimiter", delimit). \
                     csv(filename, header=True, inferSchema=True)
                 df = df.withColumn("Order Date", f.regexp_replace("Order Date", "-", "/"))
                 df = df.withColumn("Order Date", f.to_date("Order Date", "dd/mm/yyyy"))
-                df = df.withColumn("Order Date", f.date_format("Order Date", "dd/MM/yyyy"))
+                # df = df.withColumn("Order Date", f.date_format("Order Date", "dd/MM/yyyy"))
         except Exception as e:
             logger.exception("Unable to read file Exception %s occurred", e)
             print("Unable to save file due to exception %s. ", e)
