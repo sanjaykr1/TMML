@@ -35,13 +35,11 @@ class Utility:
                     option("delimiter", delimit).\
                     csv(filename, header=True, schema=schema)
                 df = self.date_col_convert(df)
-                # df = df.withColumn("Order Date", f.date_format("Order Date", "dd/MM/yyyy"))
             else:
                 df = self.spark.read. \
                     option("delimiter", delimit). \
                     csv(filename, header=True, inferSchema=True)
                 df = self.date_col_convert(df)
-                # df = df.withColumn("Order Date", f.date_format("Order Date", "dd/MM/yyyy"))
         except Exception as e:
             logger.exception("Unable to read file Exception %s occurred", e)
             print("Unable to save file due to exception %s. ", e)
