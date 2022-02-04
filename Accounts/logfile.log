@@ -1,0 +1,8 @@
+02/03/2022 12:12:36 PM : INFO :__main__ :Creating customer and account objects from Pipeline class.
+02/03/2022 12:12:43 PM : INFO :root :Creating spark session from Utility class
+02/03/2022 12:12:43 PM : INFO :Accounts.customer_data :Creating customer data class object.
+02/03/2022 12:12:43 PM : INFO :Accounts.utility :Reading csv file with filename dataset/customer_data.csv
+02/03/2022 12:12:48 PM : INFO :root :Creating spark session from Utility class
+02/03/2022 12:12:48 PM : INFO :Accounts.account_data :Creating Account data class object
+02/03/2022 12:12:48 PM : INFO :Accounts.utility :Reading csv file with filename dataset/account_data.csv
+02/03/2022 12:12:48 PM : INFO :__main__ :Finding associated accounts.
