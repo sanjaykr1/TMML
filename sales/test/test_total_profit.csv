@@ -1,0 +1,3 @@
+Region,Country,Item Type,Sales Channel,Order Priority,Order Date,Order ID,Units Sold,Unit Price,Total Revenue,Total Profit,Total_profit_Asia
+Asia,Mongolia,Personal Care,Offline,C,2014-01-02,832401311,4901.0,81.73,400558.73,122819.06,130647.18
+Asia,Kyrgyzstan,Vegetables,Online,H,2011-01-06,814711606,124.0,154.06,19103.44,7828.12,130647.18
