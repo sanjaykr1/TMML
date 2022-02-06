@@ -18,6 +18,7 @@ class MyTestCase(PySparkTest):
         :return:
         """
         ac_obj = AccountData("test_account_data.csv")
+        ac_obj.df.show()
         cols = ["customerId", "accountId", "balance"]
         data = [("INA001", "ACC001", "1000"),
                 ("INA002", "ACC002", "2003"),
